@@ -4,11 +4,10 @@ import Footer from "./layout/Footer";
 import Header from "./layout/Header";
 import Home from "./pages/Home";
 import { findRequestEndPoint } from "./utils/findRequestEndPoint";
-import { requests } from "./services/requests";
 
 const App = () => {
-  let location = useLocation();
-  const endpoint = findRequestEndPoint(location.pathname, requests);
+  let { pathname } = useLocation();
+  const endpoint = findRequestEndPoint(pathname);
 
   return (
     <div className="App">

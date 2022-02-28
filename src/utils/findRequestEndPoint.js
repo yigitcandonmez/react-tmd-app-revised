@@ -1,4 +1,6 @@
-export const findRequestEndPoint = (pathname, requests) => {
+import { requests } from "../services/requests";
+
+export const findRequestEndPoint = (pathname) => {
   let routeObject = {};
 
   requests.map((e) => {
