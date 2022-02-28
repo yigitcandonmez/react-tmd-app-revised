@@ -5,7 +5,7 @@ export const findRequestEndPoint = (pathname, requests) => {
     if (e.name === pathname) {
       return (routeObject = { name: e.name, url: e.url });
     } else {
-      return null;
+      return (routeObject = { name: "*" });
     }
   });
 

@@ -15,10 +15,13 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route
-          path={endpoint.name}
-          element={<MovieList endpoint={endpoint.url} />}
-        />
+        {endpoint.name !== "*" && (
+          <Route
+            path={endpoint.name}
+            element={<MovieList endpoint={endpoint.url} />}
+          />
+        )}
+        <Route path={endpoint.name} element={<div>Hatalı URL</div>} />
       </Routes>
       <Footer />
     </div>
