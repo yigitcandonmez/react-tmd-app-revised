@@ -15,8 +15,6 @@ const MovieListItem = (props) => {
         >
           <ContentLoader
             speed="2"
-            width={"w-full"}
-            height={"h-full"}
             viewBox="0 0 360 400"
             backgroundColor="rgba(217, 217, 217, 0.4)"
             foregroundColor="rgba(237, 237, 237, 0.5)"
