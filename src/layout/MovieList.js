@@ -12,7 +12,9 @@ const MovieList = ({ endpoint, title }) => {
     const endPointWithTime = endpoint.replace("time", timeWindow);
     const response = await API.get(`${endPointWithTime}`);
     setMovies(response.data.results);
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   };
 
   const handleChange = (e) => {
@@ -24,24 +26,44 @@ const MovieList = ({ endpoint, title }) => {
   }, [setMovies, timeWindow]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div>
+    <div className="mt-4 mb-1">
       {title === "/trending" && (
-        <select defaultValue={timeWindow} onChange={handleChange}>
-          <option value="day">Day</option>
-          <option value="week">Week</option>
-        </select>
+        <div className="flex items-center justify-between">
+          <p style={{ color: "#5a6979", fontWeight: "bold", fontSize: "20px" }}>
+            {title}
+          </p>
+
+          <select
+            defaultValue={timeWindow}
+            onChange={handleChange}
+            className="pl-2"
+            style={{
+              backgroundColor: "#21272e",
+              color: "#5a6979",
+              outline: "none",
+              width: "80px",
+            }}
+          >
+            <option value="day">DAY</option>
+            <option value="week">WEEK</option>
+          </select>
+        </div>
       )}
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        movies?.map((e) => (
+      <div
+        className="flex flex-wrap align-middle justify-between pt-2 pb-3"
+        style={{
+          borderTop: "1px solid #445566",
+          borderBottom: "1px solid #445566",
+        }}
+      >
+        {movies?.map((e) => (
           <MovieListItem
-            title={e.title}
+            img={e.poster_path ? e.poster_path : e.backdrop_path}
             key={e.id}
-            original_title={e.original_title}
+            loading={loading}
           />
-        ))
-      )}
+        ))}
+      </div>
     </div>
   );
 };

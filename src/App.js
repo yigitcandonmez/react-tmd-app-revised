@@ -5,6 +5,7 @@ import MovieList from "./layout/MovieList";
 import Footer from "./layout/Footer";
 import Header from "./layout/Header";
 import Home from "./pages/Home";
+import "./index.css";
 
 const App = () => {
   const [endPoint, setEndPoint] = useState();
@@ -17,7 +18,7 @@ const App = () => {
   }, [pathname, setEndPoint]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className="App">
+    <div className="App container mx-auto">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
