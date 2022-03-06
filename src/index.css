@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +15,7 @@ body,
 #root {
   width: 100vw;
   height: 100vh;
+  font-family: "Fredoka", sans-serif;
 }
 
 #root {

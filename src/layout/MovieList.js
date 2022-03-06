@@ -17,6 +17,8 @@ const MovieList = ({ endpoint, title }) => {
     }, 1000);
   };
 
+  console.log(movies);
+
   const handleChange = (e) => {
     setTimeWindow(e.target.value);
   };
@@ -29,28 +31,38 @@ const MovieList = ({ endpoint, title }) => {
     <div className="mt-4 mb-1">
       {title === "/trending" && (
         <div className="flex items-center justify-between">
-          <p style={{ color: "#5a6979", fontWeight: "bold", fontSize: "20px" }}>
-            {title}
+          <p style={{ color: "#5a6979", fontSize: "15px" }}>
+            /POPULAR FILMS THIS {timeWindow.toUpperCase()}
           </p>
-
-          <select
-            defaultValue={timeWindow}
-            onChange={handleChange}
-            className="pl-2"
-            style={{
-              backgroundColor: "#21272e",
-              color: "#5a6979",
-              outline: "none",
-              width: "80px",
-            }}
-          >
-            <option value="day">DAY</option>
-            <option value="week">WEEK</option>
-          </select>
+          <div className="flex items-center justify-center">
+            <p
+              style={{ color: "#5a6979", fontWeight: "bold", fontSize: "12px" }}
+            >
+              BROWSE BY
+            </p>
+            <select
+              defaultValue={timeWindow}
+              onChange={handleChange}
+              className="pl-2 text-xs"
+              style={{
+                backgroundColor: "#21272e",
+                color: "#5a6979",
+                outline: "none",
+                width: "80px",
+              }}
+            >
+              <option value="day" className="text-xs">
+                DAY
+              </option>
+              <option value="week" className="text-xs">
+                WEEK
+              </option>
+            </select>
+          </div>
         </div>
       )}
       <div
-        className="flex flex-wrap align-middle justify-between pt-2 pb-3"
+        className="flex flex-wrap align-middle justify-between pb-8"
         style={{
           borderTop: "1px solid #445566",
           borderBottom: "1px solid #445566",
@@ -59,8 +71,9 @@ const MovieList = ({ endpoint, title }) => {
         {movies?.map((e) => (
           <MovieListItem
             img={e.poster_path ? e.poster_path : e.backdrop_path}
-            key={e.id}
             loading={loading}
+            release={e.release_date ? e.release_date : e.first_air_date}
+            vote={e.vote_average}
           />
         ))}
       </div>
