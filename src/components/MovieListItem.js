@@ -2,7 +2,7 @@ import React from "react";
 import ContentLoader from "react-content-loader";
 
 const MovieListItem = (props) => {
-  const { img, loading, release, vote } = props;
+  const { img, loading, release, vote, isLiked, handleLikeClick } = props;
 
   return (
     <div className="movieList w-36 mt-5 mb-2 h-40">
@@ -33,7 +33,27 @@ const MovieListItem = (props) => {
               borderRadius: "4px",
               cursor: "pointer",
             }}
-          />
+          >
+            <div className="w-full h-full relative">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="right-1 bottom-1 w-5 h-5 absolute text-red-500"
+                fill={isLiked}
+                onClick={() => {
+                  handleLikeClick(img);
+                }}
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                />
+              </svg>
+            </div>
+          </div>
           <div className="movieInfo flex  h-4 w-full flex-row mt-1  justify-center">
             <div className="movieInfo__view flex items-center justify-center">
               <svg
