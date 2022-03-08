@@ -1,3 +1,5 @@
 const LikedImagesSchema = {};
 
-export const localStorageLikedImages = (img) => {};
+export const getLikedImages = () => {};
+
+export const setLikedImages = (img) => {};
