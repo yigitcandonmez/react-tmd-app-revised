@@ -25,7 +25,6 @@ const MovieList = ({ endpoint, title }) => {
   };
 
   const handleLikeClick = (img) => {
-    console.log(img);
     setAlert(true);
   };
 

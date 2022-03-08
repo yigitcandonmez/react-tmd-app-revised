@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Redirect } from "react-router-dom";
 import { findRequestEndPoint } from "./utils/findRequestEndPoint";
 import MovieList from "./layout/MovieList";
 import Footer from "./layout/Footer";
