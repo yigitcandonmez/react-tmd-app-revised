@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ContentLoader from "react-content-loader";
 
 const MovieListItem = (props) => {
-  const { img, loading, release, vote, isLiked, handleLikeClick } = props;
+  const { img, loading, release, vote, likedMovies, handleLikeClick } = props;
+  const [isLiked, setIsLiked] = useState(false);
+
+  useEffect(() => {
+    if (likedMovies.includes(img)) {
+      setIsLiked(true);
+    } else {
+      setIsLiked(false);
+    }
+  }, [likedMovies, loading]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="movieList w-36 mt-5 mb-2 h-40">
@@ -38,7 +47,7 @@ const MovieListItem = (props) => {
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="right-1 bottom-1 w-5 h-5 absolute text-red-500"
-                fill={isLiked}
+                fill={isLiked ? "red" : "none"}
                 onClick={() => {
                   handleLikeClick(img);
                 }}
@@ -58,7 +67,7 @@ const MovieListItem = (props) => {
             <div className="movieInfo__view flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-4 w-4"
+                className="h-4 w-4"
                 viewBox="0 0 20 20"
                 fill="#40bcf4"
               >
@@ -81,7 +90,7 @@ const MovieListItem = (props) => {
             <div className="movieInfo__average flex items-center justify-center pl-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-4 w-4"
+                className="h-4 w-4"
                 viewBox="0 0 20 20"
                 fill="orange"
               >
